@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
   policyDetails: {
     fontSize: 18,
     margin: 5,
-    fontWeight: '700',
+    fontWeight: '900',
     width: '40%'
   },
 });

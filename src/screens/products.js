@@ -49,10 +49,10 @@ export default function MyProductsScreen({ navigation }) {
                 style={{ width: 35, height: 35 }}
                 source={item.image}
               />
-              <Text style={{ marginLeft: 20, fontSize: 20, fontWeight: '700' }}>{item.title}</Text>
+              <Text style={{ color:'#fff', marginLeft: 20, fontSize: 20, fontWeight: '700' }}>{item.title}</Text>
             </View>
             <Image
-              style={{ width: 20, height: 20, tintColor: '#1279BE' }}
+              style={{ width: 20, height: 20, tintColor: '#fff' }}
               source={require('../assets/right-arrow.png')}
             />
           </TouchableOpacity>

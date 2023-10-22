@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:/Users/cepl/Documents/ConfigDemo/ios/Bupa.xcodeproj">
+      location = "group:Bupa.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">

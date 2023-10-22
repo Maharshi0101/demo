@@ -94,7 +94,7 @@ export default function HomeScreen({ navigation }) {
   }
 
   return (
-    <ScrollView contentContainerStyle={{ flexGrow: 1, backgroundColor: '#f5f5f5' }}>
+    <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
       <Carousel
         {...baseOptions}
         loop

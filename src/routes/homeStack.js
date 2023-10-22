@@ -45,15 +45,24 @@ function CalculatorScreen({ navigation }) {
 
 function DrawerStack() {
   return (
-    <Drawer.Navigator drawerContent={(props) => <DrawerMenu {...props} />}>
-      <Drawer.Screen name="Home" component={HomeScreen} />
-      {/* <Drawer.Screen name="Products" component={MyProductsScreen} />
-      <Drawer.Screen name="My Profile" component={MyProfileScreen} />
-      <Drawer.Screen name="Settings" component={SettingsScreen} />
-      <Drawer.Screen name="Policy" component={PolicyScreen} />
-      <Drawer.Screen name="Health Insurance" component={HealthInsuranceScreen} />
-      <Drawer.Screen name="Notifications" component={NotificationsScreen} />
-      <Drawer.Screen name="Calculator" component={CalculatorScreen} /> */}
+    <Drawer.Navigator
+      screenOptions={{
+        drawerStyle: {
+          backgroundColor: '#EAD1DC',
+        },
+      }}
+      drawerContent={(props) => <DrawerMenu {...props} />}>
+      <Drawer.Screen name="Home" options={{
+        headerShown: true,
+        headerStyle: {
+          backgroundColor: '#4285f4',
+        },
+        headerTintColor: '#fff',
+        headerTitleAlign: 'center',
+        headerTitleStyle: {
+          fontWeight: 'bold'
+        },
+      }} component={HomeScreen} />
     </Drawer.Navigator>
   );
 }
@@ -61,7 +70,17 @@ function DrawerStack() {
 
 export default function HomeStack() {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator screenOptions={{
+      headerShown: true,
+      headerStyle: {
+        backgroundColor: '#4285f4',
+      },
+      headerTintColor: '#fff',
+      headerTitleAlign: 'center',
+      headerTitleStyle: {
+        fontWeight: 'bold'
+      },
+    }}>
       <Stack.Screen name="Home Initial" options={{
         headerShown: false
       }} component={DrawerStack} />
