@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Dimensions, ScrollView, FlatList, Text, Image } from 'react-native';
+import { StyleSheet, View, Dimensions, ScrollView, FlatList, Text, Image, TouchableOpacity } from 'react-native';
 import Carousel from 'react-native-reanimated-carousel';
 import FormButton from '../components/formButton';
 import Pagination from '../components/pagination';
@@ -15,26 +15,30 @@ import { useAuth } from '../contexts/auth';
 const PAGE_WIDTH = Dimensions.get('window').width;
 
 const data = [
-  {
+  [{
     id: 1,
     title: "Products",
-    image: require('../assets/products.png')
+    image: require('../assets/products.png'),
+    navigate: 'Products'
   },
   {
     id: 2,
     title: "My Insurance",
-    image: require('../assets/healthcare.png')
-  },
-  {
+    image: require('../assets/healthcare.png'),
+    navigate: 'Notifications'
+  }],
+  [{
     id: 3,
     title: "Settings",
-    image: require('../assets/settings.png')
+    image: require('../assets/settings.png'),
+    navigate: 'Settings'
   },
   {
     id: 4,
     title: "My Network",
-    image: require('../assets/my-network.png')
-  }
+    image: require('../assets/my-network.png'),
+    navigate: 'Policy'
+  }]
 ];
 
 
@@ -50,7 +54,7 @@ const colors = [
 ];
 
 
-export default function HomeScreen() {
+export default function HomeScreen({ navigation }) {
 
   const [isVertical, setIsVertical] = React.useState(false);
   const progressValue = useSharedValue(0);
@@ -68,21 +72,23 @@ export default function HomeScreen() {
       height: PAGE_WIDTH * 0.6,
     });
 
-
-  const signOut = () => {
-    auth.signOut();
-  };
-
-  const Card = ({ data }) => {
+  const TabularCard = ({ data }) => {
     return (
-      <View style={{ margin: 10 }}>
-        <View style={styles.cardItem}>
-          <Image
-            style={styles.tinyLogo}
-            source={data.image}
-          />
-          <Text style={styles.text}>{data.title}</Text>
-        </View>
+      <View style={{ flexDirection: 'row', alignItems: 'center', margin: 10, justifyContent: 'space-between' }}>
+        {data.map((item) => {
+          return (
+            <TouchableOpacity onPress={() => { navigation.navigate(item.navigate) }} activeOpacity={0.9}>
+              <View style={styles.cardItem}>
+                <Image
+                  style={styles.tinyLogo}
+                  source={item.image}
+                />
+                <Text style={styles.text}>{item.title}</Text>
+              </View>
+            </TouchableOpacity>
+          )
+        })
+        }
       </View>
     )
   }
@@ -110,23 +116,35 @@ export default function HomeScreen() {
       {!!progressValue && (
         <Pagination length={items.length} progressValue={progressValue} />
       )}
-      <View style={{ marginTop: 25 }}>
+      <View style={{ width: '95%', alignSelf: 'center' }}>
+
+        <FormButton
+          modeValue='contained'
+          buttonColor={'#1279BE'}
+          contentStyle={{
+            width: '100%'
+          }}
+          labelStyle={{
+            fontSize: 20,
+          }}
+          title='Do More With Bupa'
+          onPress={() => {
+            // TODO
+          }}
+        />
+      </View>
+
+      <View style={{ width: '95%', marginTop: 20, alignSelf: 'center' }}>
         <FlatList
           data={data}
-          showsHorizontalScrollIndicator={false}
-          horizontal={true}
+          showsVerticalScrollIndicator={false}
+          horizontal={false}
           renderItem={({ item }) => (
-            <Card data={item} />
+            <TabularCard data={item} />
           )}
           keyExtractor={item => item.id}
         />
       </View>
-      <FormButton modeValue='contained' title='Logout'
-        onPress={() => {
-          // TODO
-          signOut()
-        }}
-      />
     </ScrollView>
   );
 }
@@ -142,21 +160,14 @@ const styles = StyleSheet.create({
     marginTop: 5,
     fontSize: 15
   },
-  card: {
-    height: 50,
-    width: 100,
-    backgroundColor: '#f18484',
-    // justifyContent: 'center', //Centered vertically
-    // alignItems: 'center', // Centered horizontally
-  },
   tinyLogo: {
-    marginTop: 10,
-    width: 50,
-    height: 50,
+    width: 60,
+    height: 60,
+    marginBottom: 10,
   },
   cardItem: {
-    height: 120,
-    width: 150,
+    height: 150,
+    width: PAGE_WIDTH / 2.4,
     shadowColor: 'black',
     shadowOffset: { width: 0, height: 2 },
     shadowRadius: 6,
