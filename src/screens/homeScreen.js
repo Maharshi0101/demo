@@ -25,7 +25,7 @@ const data = [
     id: 2,
     title: "My Insurance",
     image: require('../assets/healthcare.png'),
-    navigate: 'Notifications'
+    navigate: 'My Insurance'
   }],
   [{
     id: 3,
@@ -37,7 +37,7 @@ const data = [
     id: 4,
     title: "My Network",
     image: require('../assets/my-network.png'),
-    navigate: 'Policy'
+    navigate: 'My Network'
   }]
 ];
 

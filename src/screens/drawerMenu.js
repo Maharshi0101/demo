@@ -3,6 +3,7 @@ import { View, Text, FlatList, TouchableOpacity, Image } from "react-native";
 import { SafeAreaView } from 'react-native-safe-area-context'
 import FormButton from '../components/formButton';
 import { useAuth } from '../contexts/auth';
+import { configData } from '../mockData'
 
 const menuOptions = [
     {
@@ -56,7 +57,7 @@ export default DrawerMenu = ({ navigation }) => {
 
 
     return (
-        <SafeAreaView style={{ flex: 1, marginTop:10, marginBottom:10, justifyContent: 'space-between' }}>
+        <SafeAreaView style={{ flex: 1, marginTop: 10, marginBottom: 10, justifyContent: 'space-between' }}>
             <View style={{
                 borderRadius: 20,
                 borderWidth: 1,
@@ -65,7 +66,7 @@ export default DrawerMenu = ({ navigation }) => {
                 width: '90%',
             }}>
                 <FlatList
-                    data={menuItems}
+                    data={configData?.menu?.items}
                     renderItem={({ item }) => (
                         <View style={{}}>
                             <TouchableOpacity

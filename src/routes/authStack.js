@@ -11,7 +11,7 @@ export default function AuthStack() {
     <Stack.Navigator initialRouteName='Login' screenOptions={{
       headerShown: true,
       headerStyle: {
-        backgroundColor: '#4285f4',
+        backgroundColor: '#0179C8',
       },
       headerTintColor: '#fff',
       headerTitleAlign: 'center',

@@ -14,7 +14,7 @@ export default function Routes() {
     ...DefaultTheme,
     colors: {
       ...DefaultTheme.colors,
-      background: '#a4c2f4',
+      background: '#fff',
     },
   };
 
