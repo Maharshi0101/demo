@@ -42,7 +42,8 @@ const menuOptions = [
 export default DrawerMenu = ({ navigation }) => {
     const [menuItems, setMenuItems] = useState([]);
     const auth = useAuth();
-
+    const data = JSON.parse(configData)
+    
     useEffect(() => {
         const getMenuItems = async () => {
             setMenuItems(menuOptions);
@@ -66,7 +67,7 @@ export default DrawerMenu = ({ navigation }) => {
                 width: '90%',
             }}>
                 <FlatList
-                    data={configData?.menu?.items}
+                    data={ data?.menu?.items}
                     renderItem={({ item }) => (
                         <View style={{}}>
                             <TouchableOpacity

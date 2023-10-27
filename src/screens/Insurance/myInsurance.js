@@ -3,28 +3,35 @@ import { View, Text, FlatList, TouchableOpacity, Image, StyleSheet } from 'react
 import { configData } from "../../mockData";
 
 export default function MyInsurance({ navigation }) {
+
+    const insurance = JSON.parse(configData)?.home_features?.myInsurance
+
     return (
         <View style={styles.container}>
             <FlatList
-                data={configData?.home_features?.myInsurance}
+                data={insurance}
                 showsVerticalScrollIndicator={false}
-                renderItem={({ item }) => (
-                    <TouchableOpacity
-                        onPress={() => { navigation.navigate(item.navigate) }}
-                        style={styles.box}>
-                        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                renderItem={({ item }) => {
+                    return (
+                        <TouchableOpacity
+                            onPress={() => { navigation.navigate(item.navigate) }}
+                            style={styles.box}>
+                            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                                <Image
+                                    style={styles.tinyLogo}
+                                    source={{
+                                        uri: `${item.image}`
+                                    }}
+                                />
+                                <Text style={styles.titleText}>{item.title}</Text>
+                            </View>
                             <Image
-                                style={styles.tinyLogo}
-                                source={item.image}
+                                style={styles.rightArrow}
+                                source={require('../../assets/right-arrow.png')}
                             />
-                            <Text style={styles.titleText}>{item.title}</Text>
-                        </View>
-                        <Image
-                            style={styles.rightArrow}
-                            source={require('../../assets/right-arrow.png')}
-                        />
-                    </TouchableOpacity>
-                )}
+                        </TouchableOpacity>
+                    )
+                }}
                 keyExtractor={item => item.id}
             />
         </View>

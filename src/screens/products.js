@@ -6,6 +6,7 @@ import { configData } from "../mockData";
 
 export default function MyProductsScreen({ navigation }) {
 
+  const products = JSON.parse(configData)?.home_features?.products
 
   const Card = ({ data }) => {
     return (
@@ -41,7 +42,7 @@ export default function MyProductsScreen({ navigation }) {
     <ScrollView contentContainerStyle={{ flex: 1 }}>
       <Text style={styles.planText}>We have these plans for you</Text>
       <FlatList
-        data={configData?.home_features?.products}
+        data={products}
         showsVerticalScrollIndicator={false}
         renderItem={({ item }) => (
           <Card data={item} />

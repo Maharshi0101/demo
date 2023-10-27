@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, ScrollView, Image, StyleSheet } from 'react-native'
+import { View, Text, ScrollView, Image, StyleSheet, Alert } from 'react-native'
 import FormButton from "../components/formButton";
 
 const data = [
@@ -90,6 +90,14 @@ export default function ProductDetails({ navigation }) {
                     buttonColor={'#0179C8'}
                     onPress={() => {
                         //TODO
+                        Alert.alert('Add to Cart', 'Under Maintenance', [
+                            {
+                                text: 'Cancel',
+                                onPress: () => console.log('Cancel Pressed'),
+                                style: 'cancel',
+                            },
+                            { text: 'OK', onPress: () => console.log('OK Pressed') },
+                        ]);
                     }}
                 />
             </View>
