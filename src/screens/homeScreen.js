@@ -10,7 +10,7 @@ import Animated, {
   useSharedValue,
 } from 'react-native-reanimated';
 import { SBItem } from '../components/SBItem';
-import { configData } from '../json/configData';
+import configData from '../json/configData.json';
 
 const PAGE_WIDTH = Dimensions.get('window').width;
 
@@ -18,8 +18,8 @@ export default function HomeScreen({ navigation }) {
 
   const [isVertical, setIsVertical] = React.useState(false);
   const progressValue = useSharedValue(0);
-  const banners = JSON.parse(configData)?.home_banners
-  const features = JSON.parse(configData)?.home_features
+  const banners = configData?.home_banners
+  const features = configData?.home_features
 
   const baseOptions = isVertical
     ? ({

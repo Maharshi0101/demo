@@ -1,10 +1,10 @@
 import React from "react";
 import { View, Text } from 'react-native'
-import { configData } from "../json/configData";
+import configData from "../json/configData.json";
 
 export default function AboutUs({ navigation, route }) {
 
-  const items = JSON.parse(configData)?.menu?.items
+  const items = (configData)?.menu?.items
 
   const menuItem = items.filter((data) => data.title === route?.name)
 

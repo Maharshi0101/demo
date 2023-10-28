@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { StyleSheet, Text, View, Button, Dimensions } from 'react-native';
 import RadioButton from '../components/radioButton';
-import { configData } from "../json/configData";
+import configData from "../json/configData";
 
 const height = Dimensions.get('screen').height
 
 export default function SettingsScreen({ navigation, route }) {
 
-    const items = JSON.parse(configData)?.home_features
+    const items = (configData)?.home_features
     const menuItem = items.filter((data) => data.title === route?.name)
 
     return (

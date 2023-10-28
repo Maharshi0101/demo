@@ -1,0 +1,400 @@
+{
+    "menu": {
+        "id": "menu_id",
+        "value": "menu_value",
+        "items": [
+            {
+                "id": 1,
+                "title": "Home",
+                "url": "/"
+            },
+            {
+                "id": 2,
+                "title": "Settings",
+                "content": "content",
+                "url": "/settings"
+            },
+            {
+                "id": 3,
+                "title": "My Profile",
+                "content": "content",
+                "url": "/myProfile"
+            },
+            {
+                "id": 4,
+                "title": "Policy",
+                "content": "content",
+                "url": "/policy"
+            },
+            {
+                "id": 5,
+                "title": "Notifications",
+                "content": "content",
+                "url": "/notifications"
+            },
+            {
+                "id": 6,
+                "title": "Calculator",
+                "content": "content",
+                "url": "/calculator"
+            },
+            {
+                "id": 7,
+                "title": "About Us",
+                "content": "We believe in people, in helping them feel better and helping them to stay that way. That, simply put, is how we work every day to maintain our leading reputation in Global Health and Care. Interested in learning more about our story? Here’s where you can uncover it all, whether our history, our values, what drives us, our commitment to society and investor relations, or where to find us.",
+                "image": {
+                    "mime": "image/png",
+                    "data": ""
+                }
+            },
+            {
+                "id": 8,
+                "title": "Acceptance of Agreement",
+                "content": "Welcome to our website. If you continue to browse and use it, you’re agreeing to comply with, and be bound by, the following terms and conditions of use, which together with our privacy policy, govern Bupa Arabia's relationship with you in relation to this website. If you disagree with any part of these terms and conditions, please do not use our website.The term 'Bupa Arabia' or 'Bupa’ or ‘us' or 'we' refers to the owner of the website whose registered office is www.bupa.com.sa. The term 'you' refers to the user or viewer of our website.www.bupa.com.sa",
+                "image": ""
+            }
+        ]
+    },
+    "home_banners": [
+        {
+            "id": 1,
+            "name": "name",
+            "image_url": "https://picsum.photos/id/0/400/300"
+        },
+        {
+            "id": 2,
+            "name": "name",
+            "image_url": "https://picsum.photos/id/1/400/300"
+        },
+        {
+            "id": 3,
+            "name": "name",
+            "image_url": "https://picsum.photos/id/2/400/300"
+        },
+        {
+            "id": 4,
+            "name": "name",
+            "image_url": "https://picsum.photos/id/3/400/300"
+        },
+        {
+            "id": 5,
+            "name": "name",
+            "image_url": "https://picsum.photos/id/4/400/300"
+        }
+    ],
+    "home_features": [
+        {
+            "id": 1,
+            "title": "Products",
+            "image": "https://cdn-icons-png.flaticon.com/512/1474/1474713.png",
+            "navigate": "Products",
+            "items": [
+                {
+                    "class": "Vip",
+                    "category": "Gold+",
+                    "coverage": "500,000",
+                    "currency": "SAR",
+                    "rating": "3",
+                    "details": [
+                        {
+                            "id": "1",
+                            "title": "Approved hospitals and clinics network",
+                            "value": "NWM"
+                        },
+                        {
+                            "id": "2",
+                            "title": "Overall Max. Limit per member",
+                            "value": "5,00,00"
+                        },
+                        {
+                            "id": "3",
+                            "title": "Hospitalization costs and same-day cases.",
+                            "value": "Covered"
+                        },
+                        {
+                            "id": "4",
+                            "title": "Level of accommodation within the network",
+                            "value": "Covered"
+                        },
+                        {
+                            "id": "5",
+                            "title": "Out-patient department costs",
+                            "value": "Covered"
+                        },
+                        {
+                            "id": "6",
+                            "title": "-(Natural childbirth, prenatal and postnatal care)",
+                            "value": "SAR 15,000"
+                        },
+                        {
+                            "id": "7",
+                            "title": "Pre-existing and chronic diseases",
+                            "value": "Covered up to the maximum annual benefit limit"
+                        },
+                        {
+                            "id": "8",
+                            "title": "Pshychiatric Treatment",
+                            "value": "Covered up to SR 50,000 per insurance cover period."
+                        },
+                        {
+                            "id": "9",
+                            "title": "Hearing aid costs",
+                            "value": "Covered up to SAR 6,000 for total claims for both ears over the policy term"
+                        },
+                        {
+                            "id": "10",
+                            "title": "Consulting an in-network doctor",
+                            "value": "Covered"
+                        }
+                    ]
+                },
+                {
+                    "class": "Premium",
+                    "category": "Gold",
+                    "coverage": "250,000",
+                    "currency": "SAR",
+                    "rating": "3",
+                    "details": [
+                        {
+                            "id": "1",
+                            "title": "Approved hospitals and clinics network",
+                            "value": "NWM"
+                        },
+                        {
+                            "id": "2",
+                            "title": "Overall Max. Limit per member",
+                            "value": "5,00,00"
+                        },
+                        {
+                            "id": "3",
+                            "title": "Hospitalization costs and same-day cases.",
+                            "value": "Covered"
+                        },
+                        {
+                            "id": "4",
+                            "title": "Level of accommodation within the network",
+                            "value": "Covered"
+                        },
+                        {
+                            "id": "5",
+                            "title": "Out-patient department costs",
+                            "value": "Covered"
+                        },
+                        {
+                            "id": "6",
+                            "title": "-(Natural childbirth, prenatal and postnatal care)",
+                            "value": "SAR 15,000"
+                        },
+                        {
+                            "id": "7",
+                            "title": "Pre-existing and chronic diseases",
+                            "value": "Covered up to the maximum annual benefit limit"
+                        },
+                        {
+                            "id": "8",
+                            "title": "Pshychiatric Treatment",
+                            "value": "Covered up to SR 50,000 per insurance cover period."
+                        },
+                        {
+                            "id": "9",
+                            "title": "Hearing aid costs",
+                            "value": "Covered up to SAR 6,000 for total claims for both ears over the policy term"
+                        },
+                        {
+                            "id": "10",
+                            "title": "Consulting an in-network doctor",
+                            "value": "Covered"
+                        }
+                    ]
+                },
+                {
+                    "class": "Classic",
+                    "category": "Silver",
+                    "coverage": "500,000",
+                    "currency": "SAR",
+                    "rating": "2",
+                    "details": [
+                        {
+                            "id": "1",
+                            "title": "Approved hospitals and clinics network",
+                            "value": "NWM"
+                        },
+                        {
+                            "id": "2",
+                            "title": "Overall Max. Limit per member",
+                            "value": "5,00,00"
+                        },
+                        {
+                            "id": "3",
+                            "title": "Hospitalization costs and same-day cases.",
+                            "value": "Covered"
+                        },
+                        {
+                            "id": "4",
+                            "title": "Level of accommodation within the network",
+                            "value": "Covered"
+                        },
+                        {
+                            "id": "5",
+                            "title": "Out-patient department costs",
+                            "value": "Covered"
+                        },
+                        {
+                            "id": "6",
+                            "title": "-(Natural childbirth, prenatal and postnatal care)",
+                            "value": "SAR 15,000"
+                        },
+                        {
+                            "id": "7",
+                            "title": "Pre-existing and chronic diseases",
+                            "value": "Covered up to the maximum annual benefit limit"
+                        },
+                        {
+                            "id": "8",
+                            "title": "Pshychiatric Treatment",
+                            "value": "Covered up to SR 50,000 per insurance cover period."
+                        },
+                        {
+                            "id": "9",
+                            "title": "Hearing aid costs",
+                            "value": "Covered up to SAR 6,000 for total claims for both ears over the policy term"
+                        },
+                        {
+                            "id": "10",
+                            "title": "Consulting an in-network doctor",
+                            "value": "Covered"
+                        }
+                    ]
+                },
+                {
+                    "class": "Essential",
+                    "category": "Basic",
+                    "coverage": "500,000",
+                    "currency": "SAR",
+                    "rating": "1",
+                    "details": [
+                        {
+                            "id": "1",
+                            "title": "Approved hospitals and clinics network",
+                            "value": "NWM"
+                        },
+                        {
+                            "id": "2",
+                            "title": "Overall Max. Limit per member",
+                            "value": "5,00,00"
+                        },
+                        {
+                            "id": "3",
+                            "title": "Hospitalization costs and same-day cases.",
+                            "value": "Covered"
+                        },
+                        {
+                            "id": "4",
+                            "title": "Level of accommodation within the network",
+                            "value": "Covered"
+                        },
+                        {
+                            "id": "5",
+                            "title": "Out-patient department costs",
+                            "value": "Covered"
+                        },
+                        {
+                            "id": "6",
+                            "title": "-(Natural childbirth, prenatal and postnatal care)",
+                            "value": "SAR 15,000"
+                        },
+                        {
+                            "id": "7",
+                            "title": "Pre-existing and chronic diseases",
+                            "value": "Covered up to the maximum annual benefit limit"
+                        },
+                        {
+                            "id": "8",
+                            "title": "Pshychiatric Treatment",
+                            "value": "Covered up to SR 50,000 per insurance cover period."
+                        },
+                        {
+                            "id": "9",
+                            "title": "Hearing aid costs",
+                            "value": "Covered up to SAR 6,000 for total claims for both ears over the policy term"
+                        },
+                        {
+                            "id": "10",
+                            "title": "Consulting an in-network doctor",
+                            "value": "Covered"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "title": "My Insurance",
+            "image": "https://cdn-icons-png.flaticon.com/512/2966/2966486.png",
+            "navigate": "My Insurance",
+            "items": [
+                {
+                    "id": 1,
+                    "title": "Health Insurance",
+                    "image": "https://cdn-icons-png.flaticon.com/512/2966/2966327.png",
+                    "navigate": "Health Insurance"
+                },
+                {
+                    "id": 2,
+                    "title": "Life Insurance",
+                    "image": "https://cdn-icons-png.flaticon.com/512/4482/4482287.png",
+                    "navigate": "Life Insurance"
+                },
+                {
+                    "id": 3,
+                    "title": "Vehicle Insurance",
+                    "image": "https://cdn-icons-png.flaticon.com/512/1743/1743600.png",
+                    "navigate": "Vehicle Insurance"
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "title": "Settings",
+            "image": "https://cdn-icons-png.flaticon.com/512/738/738853.png",
+            "navigate": "Settings",
+            "items": [
+                {
+                    "themes": [
+                        {
+                            "value": "light",
+                            "key": "Light"
+                        },
+                        {
+                            "value": "dark",
+                            "key": "Dark"
+                        },
+                        {
+                            "value": "gray",
+                            "key": "Gray"
+                        }
+                    ]
+                },
+                {
+                    "language": [
+                        {
+                            "value": "en",
+                            "key": "English"
+                        },
+                        {
+                            "value": "ar",
+                            "key": "Arabic"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 4,
+            "title": "My Network",
+            "image": "https://cdn-icons-png.flaticon.com/512/4524/4524663.png",
+            "navigate": "My Network",
+            "items": []
+        }
+    ]
+}

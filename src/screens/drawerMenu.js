@@ -3,13 +3,13 @@ import { View, Text, FlatList, TouchableOpacity, Image } from "react-native";
 import { SafeAreaView } from 'react-native-safe-area-context'
 import FormButton from '../components/formButton';
 import { useAuth } from '../contexts/auth';
-import { configData } from '../json/configData'
+import configData from '../json/configData.json'
 
 // Create a custom component for your drawer menu
 export default DrawerMenu = ({ navigation }) => {
 
     const auth = useAuth();
-    const data = JSON.parse(configData)
+    const data = configData
 
     const signOut = () => {
         auth.signOut();
