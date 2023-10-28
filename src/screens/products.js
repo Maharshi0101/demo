@@ -2,17 +2,16 @@ import React, { useState, useEffect } from "react";
 import { View, TouchableOpacity, Button, FlatList, Image, Text, StyleSheet, ScrollView } from 'react-native'
 import FormButton from "../components/formButton";
 import StarRating from "../components/starRating";
-import { configData } from "../mockData";
 
-export default function MyProductsScreen({ navigation }) {
+export default function MyProductsScreen({ navigation, route }) {
 
-  const products = JSON.parse(configData)?.home_features?.products
+  const products = (route && route.params && route.params.details) || undefined
 
-  const Card = ({ data }) => {
+  const Card = ({ data, index }) => {
     return (
-      <View style={{ width: '90%', marginTop: 20, alignSelf: 'center' }}>
+      <View style={{ width: '90%', marginTop: index ? 0 : 10, marginBottom: 20, alignSelf: 'center' }}>
         <View style={styles.cardItem}>
-          <View style={{ width: '50%', alignItems: 'center' }}>
+          <View style={{ width: '50%' }}>
             <Text style={[styles.text, { color: '#0179C8', fontWeight: '700' }]}>{data.class}</Text>
             <View style={{ flexDirection: 'row', marginTop: 10 }}>
               <Text style={styles.text}>{data.category}</Text>
@@ -27,10 +26,10 @@ export default function MyProductsScreen({ navigation }) {
               title='View Details'
               buttonColor={'green'}
               contentStyle={{
-                width: 120,
+                width: 150,
                 height: 40
               }}
-              onPress={() => { navigation.navigate('Product Details') }}
+              onPress={() => { navigation.navigate('Product Details', { title: data.class, details: data?.details }) }}
             />
           </View>
         </View>
@@ -56,7 +55,7 @@ export default function MyProductsScreen({ navigation }) {
 
 const styles = StyleSheet.create({
   planText: {
-    marginTop: 25,
+    margin: 15,
     fontSize: 18,
     fontWeight: '700',
     textAlign: 'center'

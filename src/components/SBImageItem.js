@@ -12,10 +12,11 @@ export const SBImageItem = ({
   style,
   index: _index,
   showIndex = true,
+  item
 }) => {
   const index = (_index || 0) + 1;
   const source = React.useRef({
-    uri: `https://picsum.photos/id/${index}/400/300`,
+    uri: `${item?.image_url}`,
   }).current;
 
   return (

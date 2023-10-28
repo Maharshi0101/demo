@@ -10,55 +10,16 @@ import Animated, {
   useSharedValue,
 } from 'react-native-reanimated';
 import { SBItem } from '../components/SBItem';
-import { useAuth } from '../contexts/auth';
+import { configData } from '../json/configData';
 
 const PAGE_WIDTH = Dimensions.get('window').width;
-
-const data = [
-  [{
-    id: 1,
-    title: "Products",
-    image: require('../assets/products.png'),
-    navigate: 'Products'
-  },
-  {
-    id: 2,
-    title: "My Insurance",
-    image: require('../assets/healthcare.png'),
-    navigate: 'My Insurance'
-  }],
-  [{
-    id: 3,
-    title: "Settings",
-    image: require('../assets/settings.png'),
-    navigate: 'Settings'
-  },
-  {
-    id: 4,
-    title: "My Network",
-    image: require('../assets/my-network.png'),
-    navigate: 'My Network'
-  }]
-];
-
-
-const items = [...new Array(6).keys()]
-
-const colors = [
-  '#26292E',
-  '#899F9C',
-  '#B3C680',
-  '#5C6265',
-  '#F5D399',
-  '#F1F1F1',
-];
-
 
 export default function HomeScreen({ navigation }) {
 
   const [isVertical, setIsVertical] = React.useState(false);
   const progressValue = useSharedValue(0);
-  const auth = useAuth();
+  const banners = JSON.parse(configData)?.home_banners
+  const features = JSON.parse(configData)?.home_features
 
   const baseOptions = isVertical
     ? ({
@@ -75,20 +36,17 @@ export default function HomeScreen({ navigation }) {
   const TabularCard = ({ data }) => {
     return (
       <View style={{ flexDirection: 'row', alignItems: 'center', margin: 10, justifyContent: 'space-between' }}>
-        {data.map((item) => {
-          return (
-            <TouchableOpacity onPress={() => { navigation.navigate(item.navigate) }} activeOpacity={0.9}>
-              <View style={styles.cardItem}>
-                <Image
-                  style={styles.tinyLogo}
-                  source={item.image}
-                />
-                <Text style={styles.text}>{item.title}</Text>
-              </View>
-            </TouchableOpacity>
-          )
-        })
-        }
+        <TouchableOpacity onPress={() => { navigation.navigate(data?.navigate, { details: data?.items }) }} activeOpacity={0.9}>
+          <View style={styles.cardItem}>
+            <Image
+              style={styles.tinyLogo}
+              source={{
+                uri: `${data?.image}`
+              }}
+            />
+            <Text style={styles.text}>{data?.title}</Text>
+          </View>
+        </TouchableOpacity>
       </View>
     )
   }
@@ -110,11 +68,11 @@ export default function HomeScreen({ navigation }) {
           parallaxScrollingScale: 0.9,
           parallaxScrollingOffset: 50,
         }}
-        data={colors}
-        renderItem={({ index }) => <SBItem index={index} />}
+        data={banners}
+        renderItem={({ index, item }) => <SBItem item={item} index={index} />}
       />
       {!!progressValue && (
-        <Pagination length={items.length} progressValue={progressValue} />
+        <Pagination length={banners.length} progressValue={progressValue} />
       )}
       <View style={{ width: '95%', alignSelf: 'center' }}>
 
@@ -134,16 +92,12 @@ export default function HomeScreen({ navigation }) {
         />
       </View>
 
-      <View style={{ width: '95%', marginTop: 20, alignSelf: 'center' }}>
-        <FlatList
-          data={data}
-          showsVerticalScrollIndicator={false}
-          horizontal={false}
-          renderItem={({ item }) => (
-            <TabularCard data={item} />
-          )}
-          keyExtractor={item => item.id}
-        />
+      <View style={styles.productsContainer}>
+        {features?.map((item, index) => {
+          return (
+            <TabularCard key={index} data={item} />
+          )
+        })}
       </View>
     </ScrollView>
   );
@@ -153,8 +107,13 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: '#f5f5f5',
     flex: 1,
-    // justifyContent: 'center',
-    // alignItems: 'center'
+  },
+  productsContainer: {
+    width: "95%",
+    alignSelf: 'center',
+    flexDirection: 'row',
+    flexWrap: "wrap",
+    marginTop: 20
   },
   text: {
     marginTop: 5,

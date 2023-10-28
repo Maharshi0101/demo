@@ -1,37 +1,14 @@
 import React, { useState } from "react";
 import { StyleSheet, Text, View, Button, Dimensions } from 'react-native';
 import RadioButton from '../components/radioButton';
+import { configData } from "../json/configData";
 
 const height = Dimensions.get('screen').height
 
-const themes = [
-    {
-        key: 'light',
-        text: 'Light',
-    },
-    {
-        key: 'dark',
-        text: 'Dark',
-    },
-    {
-        key: 'gray',
-        text: 'Gray',
-    }
-];
+export default function SettingsScreen({ navigation, route }) {
 
-const language = [
-    {
-        key: 'eng',
-        text: 'English',
-    },
-    {
-        key: 'arabic',
-        text: 'Arabic',
-    }
-]
-
-
-export default function SettingsScreen({ navigation }) {
+    const items = JSON.parse(configData)?.home_features
+    const menuItem = items.filter((data) => data.title === route?.name)
 
     return (
         <View style={{ flex: 1, width: '90%', alignSelf: 'center' }}>
@@ -46,7 +23,7 @@ export default function SettingsScreen({ navigation }) {
                 <Text style={{ padding: 10, width: '60%', fontSize: 20, fontWeight: "700" }}>Select Theme:</Text>
                 <View style={{ height: '100%', borderWidth: 1, borderColor: '#1279BE', marginRight: 10 }} />
                 <View style={{ padding: 10 }}>
-                    <RadioButton PROP={themes} />
+                    <RadioButton PROP={menuItem[0]?.items[0]?.themes} />
                 </View>
             </View>
             <View style={{
@@ -60,7 +37,7 @@ export default function SettingsScreen({ navigation }) {
                 <Text style={{ padding: 10, width: '60%', fontSize: 20, fontWeight: "700" }}>Select Language:</Text>
                 <View style={{ height: '100%', borderWidth: 1, borderColor: '#1279BE', marginRight: 10 }} />
                 <View style={{ padding: 10 }}>
-                    <RadioButton PROP={language} />
+                    <RadioButton PROP={menuItem[0]?.items[1]?.language} />
                 </View>
             </View>
         </View>

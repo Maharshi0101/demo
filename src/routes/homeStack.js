@@ -11,7 +11,8 @@ import LifeInsurance from '../screens/Insurance/lifeInsurance';
 import VehicleInsurance from '../screens/Insurance/vehicleInsurance'
 import SettingsScreen from '../screens/settings';
 import ProductDetails from '../screens/productDetails'
-
+import AboutUs from '../screens/aboutUs';
+import Agreement from '../screens/agreement'
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -107,6 +108,8 @@ export default function HomeStack() {
       <Stack.Screen name="Life Insurance" component={LifeInsurance} />
       <Stack.Screen name="Vehicle Insurance" component={VehicleInsurance} />
       <Stack.Screen name="My Network" component={MyNetwork} />
+      <Stack.Screen name="About Us" component={AboutUs} />
+      <Stack.Screen name="Acceptance of Agreement" component={Agreement} />
       <Stack.Screen name="Product Details" component={ProductDetails} />
     </Stack.Navigator>
   )

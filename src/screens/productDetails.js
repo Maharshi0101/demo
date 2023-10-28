@@ -2,64 +2,21 @@ import React from "react";
 import { View, Text, ScrollView, Image, StyleSheet, Alert } from 'react-native'
 import FormButton from "../components/formButton";
 
-const data = [
-    {
-        id: 1,
-        title: 'Approved hospitals and clinics network',
-        value: 'NWM'
-    },
-    {
-        id: 2,
-        title: 'Overall Max. Limit per member',
-        value: '5,00,00'
-    },
-    {
-        id: 3,
-        title: 'Hospitalization costs and same-day cases.',
-        value: 'Covered'
-    },
-    {
-        id: 4,
-        title: 'Level of accommodation within the network',
-        value: 'Covered'
-    },
-    {
-        id: 5,
-        title: 'Out-patient department costs',
-        value: 'Covered'
-    },
-    {
-        id: 6,
-        title: '-(Natural childbirth, prenatal and postnatal care)',
-        value: 'SAR 15,000'
-    },
-    {
-        id: 7,
-        title: 'Pre-existing and chronic diseases',
-        value: 'Covered up to the maximum annual benefit limit'
-    },
-    {
-        id: 8,
-        title: 'Pshychiatric Treatment',
-        value: 'Covered up to SR 50,000 per insurance cover period.'
-    },
-    {
-        id: 9,
-        title: 'Hearing aid costs',
-        value: 'Covered up to SAR 6,000 for total claims for both ears over the policy term'
-    },
-    {
-        id: 10,
-        title: 'Consulting an in-network doctor',
-        value: 'Covered'
-    }
-]
 
-export default function ProductDetails({ navigation }) {
+export default function ProductDetails({ navigation, route }) {
+
+    const detailsData = (route && route.params && route.params.details) || undefined
+
     return (
         <ScrollView contentContainerStyle={styles.container}>
+            <Text style={{ 
+                textAlign: 'center', 
+                fontSize: 16, 
+                fontWeight:'700',
+                marginBottom: 10
+            }}>{route?.params?.title}</Text>
             <View style={styles.viewContainer} />
-            {data.map((item) => {
+            {detailsData.map((item) => {
                 return (
                     <View style={{ width: '90%', alignSelf: 'center' }}>
                         <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>

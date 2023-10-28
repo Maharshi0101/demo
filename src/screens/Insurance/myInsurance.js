@@ -1,10 +1,9 @@
 import React from "react";
 import { View, Text, FlatList, TouchableOpacity, Image, StyleSheet } from 'react-native'
-import { configData } from "../../mockData";
 
-export default function MyInsurance({ navigation }) {
+export default function MyInsurance({ navigation, route }) {
 
-    const insurance = JSON.parse(configData)?.home_features?.myInsurance
+    const insurance = (route && route.params && route.params.details) || undefined
 
     return (
         <View style={styles.container}>

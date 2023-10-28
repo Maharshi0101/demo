@@ -11,17 +11,17 @@ export default class RadioButton extends Component {
             <View>
                 {PROP.map(res => {
                     return (
-                        <View key={res.key} style={styles.container}>
+                        <View key={res.value} style={styles.container}>
                             <TouchableOpacity
                                 style={styles.radioCircle}
                                 onPress={() => {
                                     this.setState({
-                                        value: res.key,
+                                        value: res.value,
                                     });
                                 }}>
-                                {value === res.key && <View style={styles.selectedRb} />}
+                                {value === res.value && <View style={styles.selectedRb} />}
                             </TouchableOpacity>
-                            <Text style={styles.radioText}>{res.text}</Text>
+                            <Text style={styles.radioText}>{res.key}</Text>
                         </View>
                     );
                 })}
