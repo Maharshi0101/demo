@@ -1,7 +1,10 @@
 import React from "react";
 import { View, Text, FlatList, TouchableOpacity, Image, StyleSheet } from 'react-native'
+import { useTheme } from '../../contexts/theme';
 
 export default function MyInsurance({ navigation, route }) {
+
+    const { currentTheme } = useTheme();
 
     const insurance = (route && route.params && route.params.details) || undefined
 
@@ -22,10 +25,10 @@ export default function MyInsurance({ navigation, route }) {
                                         uri: `${item.image}`
                                     }}
                                 />
-                                <Text style={styles.titleText}>{item.title}</Text>
+                                <Text style={[styles.titleText, { color: currentTheme?.primaryText }]}>{item.title}</Text>
                             </View>
                             <Image
-                                style={styles.rightArrow}
+                                style={[styles.rightArrow, { tintColor: currentTheme?.iconTintColor }]}
                                 source={require('../../assets/right-arrow.png')}
                             />
                         </TouchableOpacity>

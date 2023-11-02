@@ -3,6 +3,9 @@ import { StyleSheet, View, Image, Dimensions, ScrollView } from 'react-native';
 import FormButton from '../components/formButton.js';
 import FormInput from '../components/formInput.js';
 import { useAuth } from '../contexts/auth';
+import { useSelector } from 'react-redux';
+import { useTheme } from '../contexts/theme.js';
+import { useLanguage } from '../contexts/language.js';
 
 const { width } = Dimensions.get('screen');
 
@@ -11,6 +14,8 @@ export default function LoginScreen({ navigation }) {
   const [password, setPassword] = useState('');
   const [loading, isLoading] = useState(false);
   const auth = useAuth();
+  const { currentTheme } = useTheme();
+  const { strings } = useLanguage()
 
   const signIn = async () => {
     isLoading(true);
@@ -26,19 +31,19 @@ export default function LoginScreen({ navigation }) {
           source={require('../assets/bupa.png')}
         />
         <FormInput
-          labelName='Email'
+          labelName={strings['label.email']}
           value={email}
           autoCapitalize='none'
           onChangeText={(userEmail) => setEmail(userEmail)}
         />
         <FormInput
-          labelName='Password'
+          labelName={strings['label.password']}
           value={password}
           secureTextEntry={true}
           onChangeText={(userPassword) => setPassword(userPassword)}
         />
         <FormButton
-          title='Login'
+          title={strings['title.login']}
           modeValue='contained'
           labelStyle={styles.loginButtonLabel}
           buttonColor={'#1279BE'}
@@ -48,7 +53,7 @@ export default function LoginScreen({ navigation }) {
           }}
         />
         <FormButton
-          title='Sign up here'
+          title={strings['title.signUpHere']}
           modeValue='text'
           uppercase={false}
           labelStyle={styles.navButtonText}

@@ -10,6 +10,7 @@ export default function FormInput({ labelName, ...rest }) {
       label={labelName}
       style={styles.input}
       numberOfLines={1}
+      selectionColor='#1279BE'
       mode={'outlined'}
       outlineColor={'#1279BE'}
       activeOutlineColor={'#1279BE'}

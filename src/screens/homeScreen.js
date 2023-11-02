@@ -10,16 +10,25 @@ import Animated, {
   useSharedValue,
 } from 'react-native-reanimated';
 import { SBItem } from '../components/SBItem';
-import configData from '../json/configData.json';
+// import configData from '../json/configData.json';
+import configEngData from '../json/configData_en.json'
+import configArData from '../json/configData_ar.json'
+import { useTheme } from '../contexts/theme';
+import { useSelector } from 'react-redux';
+import { useLanguage } from '../contexts/language';
 
 const PAGE_WIDTH = Dimensions.get('window').width;
 
 export default function HomeScreen({ navigation }) {
 
   const [isVertical, setIsVertical] = React.useState(false);
+  const { currentTheme } = useTheme();
+  const { strings } = useLanguage()
   const progressValue = useSharedValue(0);
-  const banners = configData?.home_banners
-  const features = configData?.home_features
+  const appLanguage = useSelector((state) => state?.langs?.appLanguage)
+  const banners = appLanguage === 'en' ? configEngData?.home_banners : configArData?.home_banners
+  const features = appLanguage === 'en' ? configEngData?.home_features : configArData?.home_features
+
 
   const baseOptions = isVertical
     ? ({
@@ -37,7 +46,7 @@ export default function HomeScreen({ navigation }) {
     return (
       <View style={{ flexDirection: 'row', alignItems: 'center', margin: 10, justifyContent: 'space-between' }}>
         <TouchableOpacity onPress={() => { navigation.navigate(data?.navigate, { details: data?.items }) }} activeOpacity={0.9}>
-          <View style={styles.cardItem}>
+          <View style={[styles.cardItem, { backgroundColor: currentTheme?.primaryCard }]}>
             <Image
               style={styles.tinyLogo}
               source={{
@@ -85,7 +94,7 @@ export default function HomeScreen({ navigation }) {
           labelStyle={{
             fontSize: 20,
           }}
-          title='Do More With Bupa'
+          title={`${strings['label.doMore']}`}
           onPress={() => {
             // TODO
           }}
@@ -132,7 +141,6 @@ const styles = StyleSheet.create({
     shadowRadius: 6,
     shadowOpacity: 0.26,
     elevation: 8,
-    backgroundColor: 'white',
     padding: 10,
     borderRadius: 25,
     justifyContent: 'center',

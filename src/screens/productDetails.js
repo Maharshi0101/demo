@@ -1,19 +1,23 @@
 import React from "react";
 import { View, Text, ScrollView, Image, StyleSheet, Alert } from 'react-native'
 import FormButton from "../components/formButton";
+import { useTheme } from '../contexts/theme';
+import { useLanguage } from "../contexts/language";
 
 
 export default function ProductDetails({ navigation, route }) {
-
+    const { strings } = useLanguage()
+    const { currentTheme } = useTheme()
     const detailsData = (route && route.params && route.params.details) || undefined
 
     return (
         <ScrollView contentContainerStyle={styles.container}>
-            <Text style={{ 
-                textAlign: 'center', 
-                fontSize: 16, 
-                fontWeight:'700',
-                marginBottom: 10
+            <Text style={{
+                textAlign: 'center',
+                fontSize: 16,
+                fontWeight: '700',
+                marginBottom: 10,
+                color: currentTheme?.primaryText
             }}>{route?.params?.title}</Text>
             <View style={styles.viewContainer} />
             {detailsData.map((item) => {
@@ -28,11 +32,11 @@ export default function ProductDetails({ navigation, route }) {
                                     }}
                                     source={require('../assets/check-mark.png')}
                                 />
-                                <Text style={{ marginLeft: 5, fontSize: 14 }}>{item.title}</Text>
+                                <Text style={{ marginLeft: 5, fontSize: 14, color: currentTheme?.primaryText }}>{item.title}</Text>
 
                             </View>
                             <View style={{ width: '30%' }}>
-                                <Text style={{ fontSize: 12, fontWeight: '700' }}>{item.value}</Text>
+                                <Text style={{ fontSize: 12, fontWeight: '700', color: currentTheme?.primaryText }}>{item.value}</Text>
                             </View>
                         </View>
                         <View style={{ borderColor: 'grey', borderWidth: 0.5, marginTop: 20, marginBottom: 20 }} />
@@ -43,7 +47,7 @@ export default function ProductDetails({ navigation, route }) {
             <View style={styles.buttonContainer}>
                 <FormButton
                     modeValue='contained'
-                    title='Buy Now'
+                    title={`${strings['label.buyNow']}`}
                     buttonColor={'#0179C8'}
                     onPress={() => {
                         //TODO

@@ -3,14 +3,21 @@ import { View, Text, FlatList, TouchableOpacity, Image } from "react-native";
 import { SafeAreaView } from 'react-native-safe-area-context'
 import FormButton from '../components/formButton';
 import { useAuth } from '../contexts/auth';
-import configData from '../json/configData.json'
+// import configData from '../json/configData.json'
+import configEngData from '../json/configData_en.json'
+import configArData from '../json/configData_ar.json'
+import { useTheme } from '../contexts/theme';
+import { useLanguage } from "../contexts/language";
+import { useSelector } from "react-redux";
 
 // Create a custom component for your drawer menu
 export default DrawerMenu = ({ navigation }) => {
 
     const auth = useAuth();
-    const data = configData
-
+    const appLanguage = useSelector((state) => state?.langs?.appLanguage)
+    const data = appLanguage === 'en' ? configEngData : configArData
+    const { currentTheme } = useTheme();
+    const { strings } = useLanguage()
     const signOut = () => {
         auth.signOut();
     };
@@ -33,12 +40,13 @@ export default DrawerMenu = ({ navigation }) => {
                                 <TouchableOpacity
                                     key={item.id}
                                     style={{ width: '90%', margin: 8, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}
-                                    onPress={() => navigation.navigate(item?.title)}
+                                    onPress={() => navigation.navigate(item?.name)}
                                 >
                                     <Text style={{
                                         textAlign: 'left',
                                         marginLeft: 20,
-                                        fontSize: 20
+                                        fontSize: 20,
+                                        color: currentTheme?.primaryText
                                     }}>{item.title}</Text>
                                     <Image
                                         style={{
@@ -57,7 +65,7 @@ export default DrawerMenu = ({ navigation }) => {
             <View style={{ width: '80%', alignSelf: 'center' }}>
                 <FormButton
                     modeValue='contained'
-                    title='Logout'
+                    title={`${strings['label.logout']}`}
                     buttonColor={'#1279BE'}
                     onPress={() => {
                         // TODO

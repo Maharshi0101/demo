@@ -1,34 +1,29 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import { View, TouchableOpacity, Text, StyleSheet } from 'react-native';
-export default class RadioButton extends Component {
-    state = {
-        value: null,
-    };
-    render() {
-        const { PROP } = this.props;
-        const { value } = this.state;
-        return (
-            <View>
-                {PROP.map(res => {
-                    return (
-                        <View key={res.value} style={styles.container}>
-                            <TouchableOpacity
-                                style={styles.radioCircle}
-                                onPress={() => {
-                                    this.setState({
-                                        value: res.value,
-                                    });
-                                }}>
-                                {value === res.value && <View style={styles.selectedRb} />}
-                            </TouchableOpacity>
-                            <Text style={styles.radioText}>{res.key}</Text>
-                        </View>
-                    );
-                })}
-                {/* <Text style={{ fontSize: 15 }}> Selected: {this.state.value} </Text> */}
-            </View>
-        );
-    }
+
+export default RadioButton = ({ PROP, value: defaultValue, onChange, textStyles = {}}) => {
+
+    const [value, setValue] = useState(defaultValue)
+
+    return (
+        <View>
+            {PROP.map(res => {
+                return (
+                    <View key={res.value} style={styles.container}>
+                        <TouchableOpacity
+                            style={styles.radioCircle}
+                            onPress={() => {
+                                setValue(res.value);
+                                onChange(res.value)
+                            }}>
+                            {value === res.value && <View style={styles.selectedRb} />}
+                        </TouchableOpacity>
+                        <Text style={[styles.radioText, textStyles]}>{res.key}</Text>
+                    </View>
+                );
+            })}
+        </View>
+    );
 }
 const styles = StyleSheet.create({
     container: {

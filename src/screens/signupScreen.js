@@ -4,36 +4,41 @@ import { IconButton, Title } from 'react-native-paper';
 import FormButton from '../components/formButton';
 import FormInput from '../components/formInput';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import { useSelector } from 'react-redux';
+import { useTheme } from '../contexts/theme.js';
+import { useLanguage } from '../contexts/language';
 
 export default function SignupScreen({ navigation }) {
   const [displayName, setDisplayName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const { strings } = useLanguage()
+  const { currentTheme } = useTheme();
 
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
       <View style={styles.container}>
-        <Title style={styles.titleText}>Let's get started!</Title>
+        <Title style={[styles.titleText, { color: currentTheme?.primaryText }]}>{strings['title.started']}</Title>
         <FormInput
-          labelName='Display Name'
+          labelName={strings['label.displayName']}
           value={displayName}
           autoCapitalize='none'
           onChangeText={(userDisplayName) => setDisplayName(userDisplayName)}
         />
         <FormInput
-          labelName='Email'
+          labelName={strings['label.email']}
           value={email}
           autoCapitalize='none'
           onChangeText={(userEmail) => setEmail(userEmail)}
         />
         <FormInput
-          labelName='Password'
+          labelName={strings['label.password']}
           value={password}
           secureTextEntry={true}
           onChangeText={(userPassword) => setPassword(userPassword)}
         />
         <FormButton
-          title='Signup'
+          title={strings['title.signUp']}
           modeValue='contained'
           buttonColor={'#1279BE'}
           labelStyle={styles.loginButtonLabel}

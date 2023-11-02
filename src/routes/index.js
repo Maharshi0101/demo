@@ -1,14 +1,20 @@
 import React from 'react';
 import { DefaultTheme, Provider as PaperProvider } from 'react-native-paper';
 import { AuthProvider } from '../contexts/auth';
+import { ThemeProvider } from '../contexts/theme';
+import { LanguageProvider } from '../contexts/language';
 import Routes from './routes';
 
 export default function Providers() {
   return (
     <PaperProvider theme={theme}>
-       <AuthProvider>
-        <Routes />
-      </AuthProvider>
+      <LanguageProvider>
+        <ThemeProvider>
+          <AuthProvider>
+            <Routes />
+          </AuthProvider>
+        </ThemeProvider>
+      </LanguageProvider>
     </PaperProvider>
   );
 }

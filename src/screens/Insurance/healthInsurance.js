@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { View, TouchableOpacity, StyleSheet, Button, FlatList, Image, Text } from 'react-native'
 import { ScrollView } from "react-native-gesture-handler";
+import { useTheme } from '../../contexts/theme';
 
 const policyDetails = [
   {
@@ -42,16 +43,19 @@ const policyDetails = [
 ];
 
 export default function HealthInsurance({ navigation }) {
+
+  const { currentTheme } = useTheme();
+
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1, marginBottom: 10 }}>
       <View style={styles.container}>
-        <Text style={styles.title}>Health Insurance Policy</Text>
+        <Text style={[styles.title, { color: currentTheme?.primaryText }]}>Health Insurance Policy</Text>
         {policyDetails.map((item) => {
           return (
             <View style={{ borderWidth: 1, borderColor: '#1279BE', flexDirection: 'row', alignItems: 'center' }}>
-              <Text style={styles.policyDetails}>{`${item.name} : `}</Text>
+              <Text style={[styles.policyDetails, { color: currentTheme?.primaryText }]}>{`${item.name} : `}</Text>
               <View style={{ height: 60, borderWidth: 1, borderColor: '#1279BE' }} />
-              <Text style={{ margin: 5, width: '50%', fontSize: 15 }}>
+              <Text style={{ margin: 5, width: '50%', fontSize: 15, color: currentTheme?.primaryText }}>
                 {item.value}
               </Text>
             </View>

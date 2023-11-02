@@ -2,15 +2,18 @@ import React, { useState, useEffect } from "react";
 import { View, TouchableOpacity, Button, FlatList, Image, Text, StyleSheet, ScrollView } from 'react-native'
 import FormButton from "../components/formButton";
 import StarRating from "../components/starRating";
+import { useTheme } from '../contexts/theme';
+import { useLanguage } from '../contexts/language'
 
 export default function MyProductsScreen({ navigation, route }) {
-
+  const { strings } = useLanguage()
+  const { currentTheme } = useTheme()
   const products = (route && route.params && route.params.details) || undefined
 
   const Card = ({ data, index }) => {
     return (
       <View style={{ width: '90%', marginTop: index ? 0 : 10, marginBottom: 20, alignSelf: 'center' }}>
-        <View style={styles.cardItem}>
+        <View style={[styles.cardItem, { backgroundColor: currentTheme?.primaryCard }]}>
           <View style={{ width: '50%' }}>
             <Text style={[styles.text, { color: '#0179C8', fontWeight: '700' }]}>{data.class}</Text>
             <View style={{ flexDirection: 'row', marginTop: 10 }}>
@@ -23,7 +26,7 @@ export default function MyProductsScreen({ navigation, route }) {
             <Text style={[styles.text, { marginTop: 5 }]}>{data.coverage + ' ' + data.currency}</Text>
             <FormButton
               modeValue='contained'
-              title='View Details'
+              title={`${strings['label.viewDetails']}`}
               buttonColor={'green'}
               contentStyle={{
                 width: 150,
@@ -39,7 +42,7 @@ export default function MyProductsScreen({ navigation, route }) {
 
   return (
     <ScrollView contentContainerStyle={{ flex: 1 }}>
-      <Text style={styles.planText}>We have these plans for you</Text>
+      <Text style={[styles.planText, { color: currentTheme?.primaryText }]}>{strings['label.plansForYou']}</Text>
       <FlatList
         data={products}
         showsVerticalScrollIndicator={false}
@@ -70,7 +73,6 @@ const styles = StyleSheet.create({
     shadowRadius: 6,
     shadowOpacity: 0.26,
     elevation: 8,
-    backgroundColor: 'white',
     padding: 25,
     borderRadius: 25,
     flexDirection: 'row',
