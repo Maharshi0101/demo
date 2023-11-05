@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { StyleSheet, Text, View, Button, Dimensions } from 'react-native';
+import { StyleSheet, Text, View, Button, Dimensions, I18nManager } from 'react-native';
 import RadioButton from '../components/radioButton';
 // import configData from "../json/configData.json";
 import configEngData from '../json/configData_en.json'
@@ -11,6 +11,7 @@ import { changeAppTheme } from '../store/slices/Themes-slice'
 import Loader from '../components/loader'
 import { useTheme } from '../contexts/theme';
 import { useLanguage } from "../contexts/language";
+import RNRestart from "react-native-restart";
 
 export default function SettingsScreen({ navigation, route }) {
     const [loading, setLoading] = useState(false)
@@ -22,6 +23,20 @@ export default function SettingsScreen({ navigation, route }) {
     const items = appLanguage === 'en' ? (configEngData)?.home_features : (configArData)?.home_features
     const menuItem = items.filter((data) => data.name === route?.name)
 
+    const languageRestart = async (value) => {
+        if (value === 'en') {
+            await I18nManager.forceRTL(false);
+        } else {
+            if (!I18nManager.isRTL) {
+                await I18nManager.forceRTL(true);
+            }
+        }
+        setTimeout(() => {
+            RNRestart.Restart();
+        }, 100)
+    };
+
+
     const updateLanguage = (value) => {
         setLoading(true)
         dispatch(changeAppLanguage(value))
@@ -29,7 +44,8 @@ export default function SettingsScreen({ navigation, route }) {
         setAppLanguage(value)
         setTimeout(() => {
             setLoading(false)
-            navigation.navigate('Home')
+            languageRestart(value)
+            // navigation.navigate('Home')
         }, 500)
     }
 
@@ -39,7 +55,7 @@ export default function SettingsScreen({ navigation, route }) {
         switchTheme(value)
         setTimeout(() => {
             setLoading(false)
-            navigation.navigate('Home')
+            // navigation.navigate('Home')
         }, 500)
     }
 

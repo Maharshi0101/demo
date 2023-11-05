@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Button, Image, Text } from 'react-native';
+import { View, Button, Image, Text, I18nManager } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import HomeScreen from '../screens/homeScreen';
@@ -96,6 +96,7 @@ function DrawerStack() {
   return (
     <Drawer.Navigator
       screenOptions={{
+        drawerPosition: I18nManager?.isRTL ? 'right' : 'left',
         drawerStyle: {
           backgroundColor: currentTheme?.primaryBackground,
         },

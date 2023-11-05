@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, FlatList, TouchableOpacity, Image } from "react-native";
+import { View, Text, FlatList, TouchableOpacity, Image, I18nManager } from "react-native";
 import { SafeAreaView } from 'react-native-safe-area-context'
 import FormButton from '../components/formButton';
 import { useAuth } from '../contexts/auth';
@@ -52,7 +52,8 @@ export default DrawerMenu = ({ navigation }) => {
                                         style={{
                                             width: 15,
                                             height: 15,
-                                            tintColor: '#1279BE'
+                                            tintColor: '#1279BE',
+                                            transform: [{ scaleX: I18nManager.isRTL ? -1 : 1 }]
                                         }}
                                         source={require('../assets/right-arrow.png')}
                                     />

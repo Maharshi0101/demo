@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, FlatList, TouchableOpacity, Image, StyleSheet } from 'react-native'
+import { View, Text, FlatList, TouchableOpacity, Image, StyleSheet, I18nManager } from 'react-native'
 import { useTheme } from '../../contexts/theme';
 
 export default function MyInsurance({ navigation, route }) {
@@ -28,7 +28,10 @@ export default function MyInsurance({ navigation, route }) {
                                 <Text style={[styles.titleText, { color: currentTheme?.primaryText }]}>{item.title}</Text>
                             </View>
                             <Image
-                                style={[styles.rightArrow, { tintColor: currentTheme?.iconTintColor }]}
+                                style={[styles.rightArrow, {
+                                    transform: [{ scaleX: I18nManager.isRTL ? -1 : 1 }],
+                                    tintColor: currentTheme?.iconTintColor
+                                }]}
                                 source={require('../../assets/right-arrow.png')}
                             />
                         </TouchableOpacity>
