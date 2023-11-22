@@ -402,10 +402,10 @@
         },
         {
             "id": 4,
-            "title": "My Network",
-            "name": "My Network",
-            "image": "https://cdn-icons-png.flaticon.com/512/4524/4524663.png",
-            "navigate": "My Network",
+            "title": "Telemedicine",
+            "name": "Telemedicine",
+            "image": "https://cdn-icons-png.flaticon.com/512/11632/11632317.png",
+            "navigate": "Telemedicine",
             "items": []
         }
     ]
