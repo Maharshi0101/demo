@@ -12,6 +12,7 @@ import VehicleInsurance from '../screens/Insurance/vehicleInsurance'
 import SettingsScreen from '../screens/settings';
 import ProductDetails from '../screens/productDetails'
 import Telemedicine from '../screens/telemedicine';
+import ChooseDoctor from '../screens/chooseDoctor';
 import AboutUs from '../screens/aboutUs';
 import Agreement from '../screens/agreement'
 import { useTheme } from '../contexts/theme';
@@ -151,6 +152,7 @@ export default function HomeStack() {
       <Stack.Screen name="Life Insurance" options={{ title: `${strings['title.life']}` }} component={LifeInsurance} />
       <Stack.Screen name="Vehicle Insurance" options={{ title: `${strings['title.vehicle']}` }} component={VehicleInsurance} />
       <Stack.Screen name="Telemedicine" options={{ title: `${strings['title.telemedicine']}` }} component={Telemedicine} />
+      <Stack.Screen name="Choose Doctor" options={{ title: `${strings['title.chooseDoctor']}` }} component={ChooseDoctor} />
       <Stack.Screen name="About Us" options={{ title: `${strings['title.aboutUs']}` }} component={AboutUs} />
       <Stack.Screen name="Acceptance of Agreement" options={{ title: `${strings['title.agreement']}` }} component={Agreement} />
       <Stack.Screen name="Product Details" options={{ title: `${strings['title.product.details']}` }} component={ProductDetails} />

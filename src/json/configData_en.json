@@ -406,7 +406,118 @@
             "name": "Telemedicine",
             "image": "https://cdn-icons-png.flaticon.com/512/11632/11632317.png",
             "navigate": "Telemedicine",
-            "items": []
+            "items": [
+                {
+                    "id": 1,
+                    "title": "Addiction Medicine",
+                    "value": "addiction medicine"
+                },
+                {
+                    "id": 2,
+                    "title": "Anaesthesia",
+                    "value": "anaesthesia"
+                },
+                {
+                    "id": 3,
+                    "title": "Dermatology",
+                    "value": "dermatology"
+                },
+                {
+                    "id": 4,
+                    "title": "Emergency Medicine",
+                    "value": "emergency medicine"
+                },
+                {
+                    "id": 5,
+                    "title": "General Practice",
+                    "value": "general practice"
+                },
+                {
+                    "id": 6,
+                    "title": "Intensive Care Medicine",
+                    "value": "intensive care medicine"
+                },
+                {
+                    "id": 7,
+                    "title": "Medical Administration",
+                    "value": "medical administration"
+                },
+                {
+                    "id": 8,
+                    "title": "Obstetrics and Gynecology",
+                    "value": "obstetrics and gynecology"
+                },
+                {
+                    "id": 9,
+                    "title": "Occupational and Environmental Medicine",
+                    "value": "occupational and environmental medicine"
+                },
+                {
+                    "id": 10,
+                    "title": "Ophthalmology",
+                    "value": "ophthalmology"
+                },
+                {
+                    "id": 11,
+                    "title": "Pediatrics and Child Health",
+                    "value": "pediatrics and child health"
+                },
+                {
+                    "id": 12,
+                    "title": "Pain Medicine",
+                    "value": "pain medicine"
+                },
+                {
+                    "id": 13,
+                    "title": "Pathology",
+                    "value": "pathology"
+                },
+                {
+                    "id": 14,
+                    "title": "Physician",
+                    "value": "physician"
+                },
+                {
+                    "id": 15,
+                    "title": "Psychiatry",
+                    "value": "psychiatry"
+                },
+                {
+                    "id": 16,
+                    "title": "Public Health Medicine",
+                    "value": "public health medicine"
+                },
+                {
+                    "id": 17,
+                    "title": "Radiation Oncology",
+                    "value": "radiation oncology"
+                },
+                {
+                    "id": 18,
+                    "title": "Radiology",
+                    "value": "radiology"
+                },
+                {
+                    "id": 19,
+                    "title": "Rehabilitation Medicine",
+                    "value": "rehabilitation medicine"
+                },
+                {
+                    "id": 20,
+                    "title": "Sexual Health Medicine",
+                    "value": "sexual health medicine"
+                },
+                {
+                    "id": 21,
+                    "title": "Sport and Exercise Medicine",
+                    "value": "sport and exercise medicine"
+                },
+                {
+                    "id": 22,
+                    "title": "Surgery",
+                    "value": "surgery"
+                }
+            ]
         }
     ]
 }
