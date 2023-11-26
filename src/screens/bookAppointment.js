@@ -63,7 +63,10 @@ export default function BookAppointment({ navigation, route }) {
                         key={item._id}
                         style={[
                             styles.slotContainer,
-                            { backgroundColor: (selectedTime === item.time ? 'lightblue' : 'transparent') },
+                            {
+                                backgroundColor: (selectedTime === item.time ? 'lightblue' : 'transparent'),
+                                marginBottom: 10
+                            },
                         ]}
                         onPress={() => handleTimeSlotPress(item?.time)}
                     >
@@ -137,7 +140,7 @@ export default function BookAppointment({ navigation, route }) {
                 <Text style={[styles.chooseSpecialityText, { color: currentTheme?.primaryText }]}>
                     {`${strings['label.selectTime']}`}
                 </Text>
-                <View style={{ flexDirection: 'row' }}>
+                <View style={{ flexDirection: 'row', flexWrap: 'wrap' }}>
                     {availableSlots?.length ? renderAvailableSlots() : <Text
                         style={[styles.specialityListText, { color: currentTheme?.primaryText }]}>
                         {`${strings['label.noAvailableSlots']}`}

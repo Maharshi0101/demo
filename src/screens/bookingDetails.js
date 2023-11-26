@@ -23,7 +23,7 @@ export default function BookingDetails({ navigation, route }) {
         return () => mounted = false;
     }, [])
 
-    console.log('bookingInfo',bookingInfo);
+    console.log('bookingInfo', bookingInfo);
 
     async function getBookingDetails() {
         try {
@@ -83,6 +83,14 @@ export default function BookingDetails({ navigation, route }) {
                 <Text style={[styles.specialityListText, { color: currentTheme?.primaryText }]}>
                     {`${strings['label.startConsultations']}`}
                 </Text>
+            </View>
+            <View style={[styles.box, { flexDirection: 'column', alignItems: 'flex-start' }]}>
+                <Text style={[styles.chooseSpecialityText, { color: currentTheme?.primaryText, alignSelf: 'center' }]}>
+                    {`${strings['label.duringConsultation']}`}
+                </Text>
+                <Image
+                    style={{ width: 50, height: 50, marginBottom: 10, resizeMode: 'contain', alignSelf: 'center' }}
+                    source={require('../assets/video-chat.png')} />
             </View>
             <View style={[styles.box, { flexDirection: 'column', alignItems: 'flex-start' }]}>
                 <Text style={[styles.chooseSpecialityText, { color: currentTheme?.primaryText, alignSelf: 'center' }]}>
