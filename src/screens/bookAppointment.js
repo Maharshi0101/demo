@@ -97,6 +97,12 @@ export default function BookAppointment({ navigation, route }) {
                 "doctorId": selectedDoctor,
                 "consultationType": "videoConference",
                 "textNotes": note,
+                "patientId": "655a0b6ee9940babdc22d052",
+                "meetingId": "191120230528",
+                "meetingLink": "191120230528",
+                "gender": 'Male',
+                "name": "John Doe",
+                "dob": "01/01/2000"
             }
             const response = await axios.post(apiUrl, body, { headers });
             setLoading(false)
