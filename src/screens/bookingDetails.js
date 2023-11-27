@@ -76,7 +76,7 @@ export default function BookingDetails({ navigation, route }) {
                     {`${strings['label.consultationDateAndTime']}`}
                 </Text>
                 <Text style={[styles.specialityListText, { color: currentTheme?.primaryText, alignSelf: 'center' }]}>
-                    {`${moment(bookingInfo?.bookingDate).format("Do MMMM, YYYY h:mm A")}`}
+                    {`${moment(bookingInfo?.bookingDate).format("Do MMMM, YYYY")}`} {bookingInfo?.time}
                 </Text>
             </View>
             <View style={{ width: '85%', marginTop: 20, marginBottom: 15, alignSelf: 'center' }}>
