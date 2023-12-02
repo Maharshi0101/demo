@@ -1,11 +1,18 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, StyleSheet, TouchableOpacity, Alert, TextInput, ScrollView } from 'react-native'
+import { View, Text, StyleSheet, TouchableOpacity, Alert, TextInput, ScrollView, Button } from 'react-native'
 import { useTheme } from '../contexts/theme';
 import { useLanguage } from '../contexts/language'
 import moment from "moment";
 import axios from 'axios';
 import FormButton from "../components/formButton";
 import Loader from '../components/loader'
+import DocumentPicker, {
+    DirectoryPickerResponse,
+    DocumentPickerResponse,
+    isCancel,
+    isInProgress
+} from 'react-native-document-picker'
+import RNFetchBlob from 'rn-fetch-blob';
 
 export default function BookAppointment({ navigation, route }) {
 
@@ -13,9 +20,12 @@ export default function BookAppointment({ navigation, route }) {
     const { strings } = useLanguage()
 
     const [note, setNote] = useState('')
+    const [imageDesc, setImageDesc] = useState('')
+    const [baseData, setBaseData] = useState([])
     const [availableSlots, setAvailableSlots] = useState([])
     const [selectedTime, setSelectedTime] = useState(null);
     const [loading, setLoading] = useState(false)
+    const [result, setResult] = useState([])
 
     const details = (route && route.params && route.params.details) || undefined
 
@@ -77,11 +87,30 @@ export default function BookAppointment({ navigation, route }) {
         )
     }
 
+    formatDoc = () => {
+        try {
+            if (result.length) {
+                let res = [{
+                    "title": result[0]?.name,
+                    "description": imageDesc,
+                    "mime": `${result[0]?.type}`,
+                    "data": baseData
+                }]
+                return res
+            }
+            return [{}]
+        } catch (e) {
+            console.log('formatDoc Error------>>',e);
+        }
+
+    }
+
     async function createBooking() {
         try {
             setLoading(true)
             const currentDate = moment(details?.selectedDate).format('YYYY-MM-DD') + 'T00:00:00.000Z'
             const selectedDoctor = details?.doctorDetails?.doctorId
+            const uploadedDoc = formatDoc()
             // Set your API endpoint
             const apiUrl = `https://test-api.bupa.com.sa/bupa-organization/point/careconnectapi/booking`;
             // Define your headers
@@ -102,15 +131,60 @@ export default function BookAppointment({ navigation, route }) {
                 "meetingLink": "191120230528",
                 "gender": 'Male',
                 "name": "John Doe",
-                "dob": "01/01/2000"
+                "dob": "01/01/2000",
+                "attachments": uploadedDoc
             }
+            console.log('Create Booking Body------------>>', body);
             const response = await axios.post(apiUrl, body, { headers });
             setLoading(false)
-            navigation.navigate('Booking Details', { bookingDetails: response?.data })
-            console.log('Create Booking------->', response?.data);
+            console.log('Create Booking Response------->>', typeof response?.data, response?.data);
+            if (typeof response?.data !== 'string') {
+                navigation.navigate('Booking Details', { bookingDetails: response?.data })
+            } else {
+                Alert.alert('API Error', 'Please try again', [
+                    {
+                        text: 'Cancel',
+                        onPress: () => console.log('Cancel Pressed'),
+                        style: 'cancel',
+                    },
+                    { text: 'OK', onPress: () => console.log('OK Pressed') },
+                ]);
+            }
         } catch (error) {
             setLoading(false)
             console.log('Create Booking Error------->', error);
+        }
+    }
+
+    const handleError = (err) => {
+        if (isCancel(err)) {
+            console.warn('Cancelled')
+            // User cancelled the picker, exit any dialogs or menus and move on
+        } else if (isInProgress(err)) {
+            console.warn('Multiple pickers were opened, only the last will be considered')
+        } else {
+            throw err
+        }
+    }
+
+    async function uploadDocument() {
+        try {
+            const pickerResult = await DocumentPicker.pickSingle({
+                presentationStyle: 'fullScreen',
+                copyTo: 'cachesDirectory',
+            })
+            setResult([pickerResult])
+            RNFetchBlob.fs
+                .readFile(pickerResult?.fileCopyUri, 'base64')
+                .then((data) => {
+                    setBaseData(data)
+                })
+                .catch((err) => {
+                    console.log('Base64 Data Error', err);
+                });
+        } catch (e) {
+            console.log('uploadDocument Error', e);
+            handleError(e)
         }
     }
 
@@ -172,11 +246,55 @@ export default function BookAppointment({ navigation, route }) {
                         width: '100%',
                     }}>
                     <TextInput
+                        placeholder="Enter Your Medical Condition..."
+                        placeholderTextColor={currentTheme?.primaryText}
                         multiline
                         numberOfLines={4}
                         onChangeText={text => setNote(text)}
                         value={note}
-                        style={{ padding: 10, color: currentTheme?.primaryText }}
+                        style={{
+                            borderColor: currentTheme?.primaryText,
+                            borderWidth: 1,
+                            padding: 10,
+                            color: currentTheme?.primaryText
+                        }}
+                    />
+                </View>
+            </View>
+            <View style={[styles.box, { width: ' 85%', flexDirection: 'column', alignItems: 'flex-start' }]}>
+                <View style={{}}>
+                    <Text style={[styles.chooseSpecialityText, { color: currentTheme?.primaryText }]}>
+                        {`${strings['label.medicalReport']}`}
+                    </Text>
+                    <Text style={[styles.specialityListText, { color: currentTheme?.primaryText }]}>
+                        {`${strings['label.uploadDocument']}`}
+                    </Text>
+                </View>
+                <View style={{ marginTop: 10, width: '95%', alignSelf: 'center' }}>
+                    <TextInput
+                        placeholder="Enter Image Description..."
+                        placeholderTextColor={currentTheme?.primaryText}
+                        onChangeText={text => setImageDesc(text)}
+                        value={imageDesc}
+                        style={{
+                            borderColor: currentTheme?.primaryText,
+                            borderWidth: 1,
+                            padding: 10,
+                            marginBottom: 5,
+                            color: currentTheme?.primaryText
+                        }}
+                    />
+                    <Text style={[styles.specialityListText, { color: currentTheme?.primaryText, marginBottom: 10 }]}>
+                        {result && result[0]?.name}
+                    </Text>
+                    <Button
+                        title={`${strings['label.upload']}`}
+                        style={{
+                            color: '#0179C8'
+                        }}
+                        onPress={() => {
+                            uploadDocument()
+                        }}
                     />
                 </View>
             </View>
