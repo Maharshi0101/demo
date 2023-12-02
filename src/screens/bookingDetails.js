@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, StyleSheet, TouchableOpacity, Image, TextInput, ScrollView } from 'react-native'
+import { View, Text, StyleSheet, TouchableOpacity, Image, TextInput, ScrollView, Linking } from 'react-native'
 import { useTheme } from '../contexts/theme';
 import { useLanguage } from '../contexts/language'
 import moment from "moment";
@@ -88,9 +88,14 @@ export default function BookingDetails({ navigation, route }) {
                 <Text style={[styles.chooseSpecialityText, { color: currentTheme?.primaryText, alignSelf: 'center' }]}>
                     {`${strings['label.duringConsultation']}`}
                 </Text>
-                <Image
-                    style={{ width: 50, height: 50, marginBottom: 10, resizeMode: 'contain', alignSelf: 'center' }}
-                    source={require('../assets/video-chat.png')} />
+                <TouchableOpacity style={{ alignSelf: 'center' }}
+                    onPress={() => {
+                        Linking.openURL('https://meet352.webex.com/meet/pr26403223056');
+                    }}>
+                    <Image
+                        style={{ width: 50, height: 50, marginBottom: 10, resizeMode: 'contain' }}
+                        source={require('../assets/video-chat.png')} />
+                </TouchableOpacity>
             </View>
             <View style={[styles.box, { flexDirection: 'column', alignItems: 'flex-start' }]}>
                 <Text style={[styles.chooseSpecialityText, { color: currentTheme?.primaryText, alignSelf: 'center' }]}>
