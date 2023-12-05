@@ -25,11 +25,11 @@ export default function Telemedicine({ navigation, route }) {
     async function getSpecialistsList() {
         try {
             // Set your API endpoint
-            const apiUrl = 'https://test-api.bupa.com.sa/bupa-organization/point/careconnectapi/speciality';
+            const apiUrl = 'https://test-api.bupa.com.sa/bupa-organization/point/careconnectapi/api/speciality';
             // Define your headers
             const headers = {
                 'Content-Type': 'application/json',
-                'Authorization': 'Bearer 1234',
+               // 'Authorization': 'Bearer 1234',
                 'X-IBM-Client-Id': 'ff2c78972b6d1ee0efb2e07a128ef1fe',
                 'X-IBM-Client-Secret': '9f38c7a03dfaf209b41bedb011e15064'
             };

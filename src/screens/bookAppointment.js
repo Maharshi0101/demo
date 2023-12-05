@@ -42,11 +42,11 @@ export default function BookAppointment({ navigation, route }) {
             const selectedDate = moment(details?.selectedDate).format('YYYY-MM-DD')
             const selectedDoctor = details?.doctorDetails?.doctorId
             // Set your API endpoint
-            const apiUrl = `https://test-api.bupa.com.sa/bupa-organization/point/careconnectapi/slots?doctorId=${selectedDoctor}&date=${selectedDate}`;
+            const apiUrl = `https://test-api.bupa.com.sa/bupa-organization/point/careconnectapi/api/slots?doctorId=${selectedDoctor}&date=${selectedDate}`;
             // Define your headers
             const headers = {
                 'Content-Type': 'application/json',
-                'Authorization': 'Bearer 1234',
+               // 'Authorization': 'Bearer 1234',
                 'X-IBM-Client-Id': 'ff2c78972b6d1ee0efb2e07a128ef1fe',
                 'X-IBM-Client-Secret': '9f38c7a03dfaf209b41bedb011e15064'
             };
@@ -112,11 +112,11 @@ export default function BookAppointment({ navigation, route }) {
             const selectedDoctor = details?.doctorDetails?.doctorId
             const uploadedDoc = formatDoc()
             // Set your API endpoint
-            const apiUrl = `https://test-api.bupa.com.sa/bupa-organization/point/careconnectapi/booking`;
+            const apiUrl = `https://test-api.bupa.com.sa/bupa-organization/point/careconnectapi/api/booking`;
             // Define your headers
             const headers = {
                 'Content-Type': 'application/json',
-                'Authorization': 'Bearer 1234',
+              //  'Authorization': 'Bearer 1234',
                 'X-IBM-Client-Id': 'ff2c78972b6d1ee0efb2e07a128ef1fe',
                 'X-IBM-Client-Secret': '9f38c7a03dfaf209b41bedb011e15064'
             };

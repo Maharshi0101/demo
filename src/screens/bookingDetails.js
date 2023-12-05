@@ -29,11 +29,11 @@ export default function BookingDetails({ navigation, route }) {
         try {
             const bookingId = bookingDetails?._id
             // Set your API endpoint
-            const apiUrl = `https://test-api.bupa.com.sa/bupa-organization/point/careconnectapi/booking?bookingId=${bookingId}`;
+            const apiUrl = `https://test-api.bupa.com.sa/bupa-organization/point/careconnectapi/api/booking?bookingId=${bookingId}`;
             // Define your headers
             const headers = {
                 'Content-Type': 'application/json',
-                'Authorization': 'Bearer 1234',
+                //'Authorization': 'Bearer 1234',
                 'X-IBM-Client-Id': 'ff2c78972b6d1ee0efb2e07a128ef1fe',
                 'X-IBM-Client-Secret': '9f38c7a03dfaf209b41bedb011e15064'
             };
