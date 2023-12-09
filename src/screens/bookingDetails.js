@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, StyleSheet, TouchableOpacity, Image, TextInput, ScrollView, Linking } from 'react-native'
+import { View, Text, StyleSheet, TouchableOpacity, Image, TextInput, ScrollView, Linking, Alert } from 'react-native'
 import { useTheme } from '../contexts/theme';
 import { useLanguage } from '../contexts/language'
 import moment from "moment";
@@ -90,7 +90,8 @@ export default function BookingDetails({ navigation, route }) {
                 </Text>
                 <TouchableOpacity style={{ alignSelf: 'center' }}
                     onPress={() => {
-                        Linking.openURL('https://meet352.webex.com/meet/pr26403223056');
+                        // Linking.openURL('https://meet352.webex.com/meet/pr26403223056');
+                        navigation.navigate('InAppBrowser')
                     }}>
                     <Image
                         style={{ width: 50, height: 50, marginBottom: 10, resizeMode: 'contain' }}
@@ -106,6 +107,31 @@ export default function BookingDetails({ navigation, route }) {
                 </Text>
             </View>
             <View style={styles.buttonContainer}>
+                <FormButton
+                    modeValue='contained'
+                    title={`${strings['title.manageAppointments']}`}
+                    contentStyle={{ alignSelf: 'center' }}
+                    buttonColor={'#0179C8'}
+                    onPress={() => {
+                        navigation.navigate('Manage Appointments')
+                    }}
+                />
+                <FormButton
+                    modeValue='contained'
+                    title={`${strings['label.addToCalender']}`}
+                    contentStyle={{ alignSelf: 'center' }}
+                    buttonColor={'#0179C8'}
+                    onPress={() => {
+                        Alert.alert('', 'Under Maintenance', [
+                            {
+                                text: 'Cancel',
+                                onPress: () => console.log('Cancel Pressed'),
+                                style: 'cancel',
+                            },
+                            { text: 'OK', onPress: () => console.log('OK Pressed') },
+                        ]);
+                    }}
+                />
                 <FormButton
                     modeValue='contained'
                     title={`${strings['title.home']}`}

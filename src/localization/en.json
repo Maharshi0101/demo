@@ -13,6 +13,7 @@
     "title.network": "My Network",
     "title.telemedicine": "Telemedicine",
     "title.chooseDoctor": "Choose Doctor",
+    "title.manageAppointments": "Manage Appointments",
     "label.chooseADoctor": "Choose a Doctor",
     "label.bookDoctor": "Please book the doctor you like from the list below.",
     "label.perMonthConsultations": "Note: You're eligible for 2 consultation per month",
@@ -60,5 +61,9 @@
     "label.plansForYou": "We have these plans for you",
     "label.viewDetails": "View Details",
     "select.language": "Select Language",
-    "select.theme": "Select Theme"
+    "select.theme": "Select Theme",
+    "label.addToCalender": "Add to Calendar",
+    "label.noAppointments": "Currently you don't have any upcoming appointments",
+    "label.noPreAppointments": "You don't have any previous appointments",
+    "label.bookAppointment": "Book an Appointment"
 }

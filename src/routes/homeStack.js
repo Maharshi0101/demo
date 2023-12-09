@@ -18,6 +18,7 @@ import BookingDetails from '../screens/bookingDetails';
 import AboutUs from '../screens/aboutUs';
 import Agreement from '../screens/agreement'
 import InAppBrowser from '../screens/inAppBrowser';
+import ManageAppointments from '../screens/manageAppointments';
 import { useTheme } from '../contexts/theme';
 import { useLanguage } from '../contexts/language';
 
@@ -162,6 +163,7 @@ export default function HomeStack() {
       <Stack.Screen name="Acceptance of Agreement" options={{ title: `${strings['title.agreement']}` }} component={Agreement} />
       <Stack.Screen name="Product Details" options={{ title: `${strings['title.product.details']}` }} component={ProductDetails} />
       <Stack.Screen name="InAppBrowser" options={{ title: `${strings['title.telemedicine']}` }} component={InAppBrowser} />
+      <Stack.Screen name="Manage Appointments" options={{ title: `${strings['title.manageAppointments']}` }} component={ManageAppointments} />
     </Stack.Navigator>
   )
 }
