@@ -27,10 +27,10 @@ export default function ChooseDoctor({ navigation, route }) {
     async function getDoctorsList(date) {
         try {
             const selectedDate = moment(date).format('YYYY-MM-DD')
-            const selectedSpeciality = speciality?.key
+            const selectedSpeciality = speciality?.uniqueIdentifier
             setLoading(true)
             // Set your API endpoint
-            const apiUrl = `https://test-api.bupa.com.sa/bupa-organization/point/careconnectapi/api/availableDates?date=${selectedDate}&speciality=${selectedSpeciality}`;
+            const apiUrl = `https://test-api.bupa.com.sa/bupa-organization/point/careconnectapi/api/availableDoctors?date=${selectedDate}&speciality=${selectedSpeciality}`;
             // Define your headers
             const headers = {
                 'Content-Type': 'application/json',

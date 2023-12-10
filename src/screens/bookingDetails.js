@@ -66,7 +66,7 @@ export default function BookingDetails({ navigation, route }) {
                     {`${strings['label.thankYou']}`}
                 </Text>
                 <Text style={[styles.chooseSpecialityText, { color: currentTheme?.primaryText, fontSize: 14 }]}>
-                    {`${strings['label.appointmentConfirmation']}`} {`${bookingInfo?.patientId?.memberId}`}
+                    {`${strings['label.appointmentConfirmation']}`} {`${bookingInfo?.patient?.memberId}`}
                 </Text>
                 <Text style={[styles.chooseSpecialityText, { color: currentTheme?.primaryText, fontSize: 14 }]}>
                     {`${strings['label.bookingRefNo']}`} {`${bookingInfo?.meetingId}`}
@@ -103,7 +103,7 @@ export default function BookingDetails({ navigation, route }) {
                     {'Doctor'}
                 </Text>
                 <Text style={[styles.specialityListText, { color: currentTheme?.primaryText, alignSelf: 'center' }]}>
-                    {`${bookingInfo?.doctorId?.firstNameEn}`} {`${bookingInfo?.doctorId?.lastNameEn}`}
+                    {`${bookingInfo?.doctor?.firstNameEn}`} {`${bookingInfo?.doctor?.lastNameEn}`}
                 </Text>
             </View>
             <View style={styles.buttonContainer}>
