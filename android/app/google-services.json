@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "674036696647",
+    "project_id": "bupa-257ab",
+    "storage_bucket": "bupa-257ab.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:674036696647:android:b66ae8fef325bdc7619362",
+        "android_client_info": {
+          "package_name": "com.configdemo"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBLTUTSBKZFDSk7_UAkO7PwMwgGEA_yyq4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

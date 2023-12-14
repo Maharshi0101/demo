@@ -402,11 +402,122 @@
         },
         {
             "id": 4,
-            "title": "شبكتي",
-            "name": "My Network",
-            "image": "https://cdn-icons-png.flaticon.com/512/4524/4524663.png",
-            "navigate": "My Network",
-            "items": []
+            "title": "التطبيب عن بعد",
+            "name": "Telemedicine",
+            "image": "https://cdn-icons-png.flaticon.com/512/11632/11632317.png",
+            "navigate": "Telemedicine",
+            "items": [
+                {
+                    "id": 1,
+                    "title": "طب الإدمان",
+                    "value": "addiction medicine"
+                },
+                {
+                    "id": 2,
+                    "title": "تخدير",
+                    "value": "anaesthesia"
+                },
+                {
+                    "id": 3,
+                    "title": "الأمراض الجلدية",
+                    "value": "dermatology"
+                },
+                {
+                    "id": 4,
+                    "title": "طب الطوارئ",
+                    "value": "emergency medicine"
+                },
+                {
+                    "id": 5,
+                    "title": "الممارسة العامة",
+                    "value": "general practice"
+                },
+                {
+                    "id": 6,
+                    "title": "طب العناية المركزة",
+                    "value": "intensive care medicine"
+                },
+                {
+                    "id": 7,
+                    "title": "الإدارة الطبية",
+                    "value": "medical administration"
+                },
+                {
+                    "id": 8,
+                    "title": "أمراض النساء والتوليد",
+                    "value": "obstetrics and gynecology"
+                },
+                {
+                    "id": 9,
+                    "title": "الطب المهني والبيئي",
+                    "value": "occupational and environmental medicine"
+                },
+                {
+                    "id": 10,
+                    "title": "طب العيون",
+                    "value": "ophthalmology"
+                },
+                {
+                    "id": 11,
+                    "title": "طب الأطفال وصحة الطفل",
+                    "value": "pediatrics and child health"
+                },
+                {
+                    "id": 12,
+                    "title": "دواء الالم",
+                    "value": "pain medicine"
+                },
+                {
+                    "id": 13,
+                    "title": "علم الأمراض",
+                    "value": "pathology"
+                },
+                {
+                    "id": 14,
+                    "title": "الطبيب المعالج",
+                    "value": "physician"
+                },
+                {
+                    "id": 15,
+                    "title": "الطب النفسي",
+                    "value": "psychiatry"
+                },
+                {
+                    "id": 16,
+                    "title": "طب الصحة العامة",
+                    "value": "public health medicine"
+                },
+                {
+                    "id": 17,
+                    "title": "علاج الأورام بالإشعاع",
+                    "value": "radiation oncology"
+                },
+                {
+                    "id": 18,
+                    "title": "الأشعة",
+                    "value": "radiology"
+                },
+                {
+                    "id": 19,
+                    "title": "طب إعادة التأهيل",
+                    "value": "rehabilitation medicine"
+                },
+                {
+                    "id": 20,
+                    "title": "طب الصحة الجنسية",
+                    "value": "sexual health medicine"
+                },
+                {
+                    "id": 21,
+                    "title": "الطب الرياضي والتمارين الرياضية",
+                    "value": "sport and exercise medicine"
+                },
+                {
+                    "id": 22,
+                    "title": "جراحة",
+                    "value": "surgery"
+                }
+            ]
         }
     ]
 }

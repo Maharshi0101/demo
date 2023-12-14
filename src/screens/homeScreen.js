@@ -96,7 +96,7 @@ export default function HomeScreen({ navigation }) {
           }}
           title={`${strings['label.doMore']}`}
           onPress={() => {
-            // TODO
+            navigation.navigate('InAppBrowser')
           }}
         />
       </View>
